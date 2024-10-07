@@ -93,24 +93,32 @@ def main():
     parser = argparse.ArgumentParser(description="PX4 uBlox Communication Analyzer")
     parser.add_argument(
         "-i",
-        "--input_filename",
+        "--input_file",
         action="store",
         required=True,
-        help="path to input file (output will be named similar)",
+        help="path to input file (include file name)",
+    )
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        action="store",
+        help="path to output files",
     )
     args = parser.parse_args()
 
-    if not args.input_filename:
-        ulog_filename = "log_160_2024-10-4-14-27-46.ulg"
-    else:
-        ulog_filename = args.input_filename
+    if not os.path.isfile(args.input_file):
+        raise FileNotFoundError
 
-    output_file_prefix = os.path.basename(ulog_filename)
+    # if output path not specified, set output dir the same as input
+    if not args.output_dir:
+        output_dir = os.path.dirname(args.input_file)
+
+    output_file_prefix = os.path.basename(args.input_file)
     # strip ".ulog"
     if output_file_prefix.lower().endswith(".ulg"):
         output_file_prefix = output_file_prefix[:-4]
 
-    raw_msgs = extract_gps_dump(ulog_filename)
+    raw_msgs = extract_gps_dump(args.input_file)
 
     count_msgs = dict()
     valid_msgs = dict()
@@ -170,10 +178,12 @@ def main():
     # print(valid_msgs)
 
     for k, v in valid_msgs.items():
-        output_filename = output_file_prefix + f"_{k}.csv"
+        output_file = os.path.join(
+            output_dir, output_file_prefix + f"_{k}.csv"
+        )
         csv_fields = ["timestamp"] + v.get("timestamp")
 
-        with open(output_filename, mode="w", newline="") as csv_entry:
+        with open(output_file, mode="w", newline="") as csv_entry:
             csv_writer = csv.writer(csv_entry, delimiter=",")
             csv_writer.writerow(csv_fields)
 
