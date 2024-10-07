@@ -2,14 +2,13 @@
 
 PX4 has an optional parameter ([`GPS_DUMP_COMM`](https://docs.px4.io/main/en/advanced_config/parameter_reference.html#GPS_DUMP_COMM)) to dump the raw communication of ublox GPS module into the flight log ([ulog](https://docs.px4.io/main/en/dev_log/ulog_file_format.html) format). However the standard log analysis tools do not evaluate this information, for example, [plotjuggler](https://github.com/facontidavide/PlotJuggler), therefore the repo is trying to extract the communication logs of the uBlox GNSS module from the PX4 flight log.
 
-This repo uses `gps_dump` messages that logged by PX4
+This repo tries to extract the `gps_dump` messages that logged by PX4, the data parsing is based on [pyubx2](https://github.com/semuconsulting/pyubx2/tree/master) to simply parse individual ublox message.
 
 
 ## Installation
 ```shell
 pip3 install -r requirements.txt
 ```
-
 
 ## Usage
 Run python scripts :
@@ -22,9 +21,9 @@ Run python scripts with GUI :
 python3 main_gui.py
 ```
 
-### Parsed messages will be written to:
+### Parsed messages will be written to csv:
 
-- logfile_name_MON-RF.csv: Parsed ublox MON-RF messages from the ublox module
+-  logfile_name_MON-RF.csv: Parsed ublox MON-RF messages from the ublox module
 - logfile_name_NAV-DOP.csv: Parsed ublox NAV-DOP messages from the ublox module
 - logfile_name_NAV-PVT.csv: Parsed ublox NAV-PVT messages from the ublox module
 
