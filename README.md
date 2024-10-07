@@ -118,3 +118,16 @@ MSGATTR = {
     ],
 }
 ```
+
+## Pre-commit
+
+The pre-commit config file are set.
+Possible to use this feature when commit changes to this repo.
+```shell
+pre-commit install
+```
+
+## References
+* [pyulog](https://github.com/PX4/pyulog/blob/main/pyulog/extract_gps_dump.py)
+* [pyubx2](https://github.com/semuconsulting/pyubx2/tree/master)
+* [PX4-GNSS-Loganalyzer ](https://github.com/consider-it/PX4-GNSS-Loganalyzer)
