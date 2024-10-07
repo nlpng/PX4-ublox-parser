@@ -90,7 +90,9 @@ def extract_gps_dump(ulog_filename):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="PX4 uBlox Communication Analyzer")
+    parser = argparse.ArgumentParser(
+        description="PX4 uBlox Communication Analyzer"
+    )
     parser.add_argument(
         "-i",
         "--input_file",
