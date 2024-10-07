@@ -1,0 +1,12 @@
+# data
+# /outputs/
+
+# python
+**/__pycache__/**
+
+# vscode
+.vscode/
+
+# misc
+*.profile
+**/.DS_Store
