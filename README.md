@@ -100,5 +100,21 @@ MSGATTR = {
             )
         },
     ],
+    "MON-SYS": [
+        "msgVer",
+        "bootType",
+        "cpuLoad",
+        "cpuLoadMax",
+        "memUsage",
+        "memUsageMax",
+        "ioUsage",
+        "ioUsageMax",
+        "runTime",
+        "noticeCount",
+        "warnCount",
+        "errorCount",
+        "tempValue",
+        "reserved0",
+    ],
 }
 ```
