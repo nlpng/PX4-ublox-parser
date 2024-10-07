@@ -1,4 +1,4 @@
-import argparse
+import argparse  # noqa: D100
 import csv
 import os
 import struct
@@ -11,7 +11,7 @@ from ubx_interface import CLIDPAIR_INV, MSGATTR, SYNC1, SYNC2, UbxParserState
 
 
 def extract_gps_dump(ulog_filename):
-    """Get gps dump data"""
+    """Get gps dump data."""
     # looking into gps_dump
     msg_filter = ["gps_dump"]
     ulog = ULog(ulog_filename, msg_filter, disable_str_exceptions=False)
@@ -91,7 +91,7 @@ def extract_gps_dump(ulog_filename):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="PX4 uBlox Communication Analyzer"
+        description="PX4 ublox gps_dump extractor"
     )
     parser.add_argument(
         "-i",

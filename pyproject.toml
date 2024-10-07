@@ -4,8 +4,7 @@ select = [
     "E", # pycodestyle
     "W", # pycodestyle warnings
     "I", # isort
-    "D", # pydocstyle
 ]
-ignore = []
+ignore = ["E501"]
 line-length = 88
 indent-width = 4
