@@ -1,0 +1,32 @@
+name: Build for Windows
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@master
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@master
+        with: { python-version: 3.8 }
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip PyInstaller
+
+      - name: Install packages
+        run: python -m pip install -r requirements.txt
+
+      - name: build
+        run: pyinstaller main_gui.py --onefile
+  
+      - name: upload
+        uses: actions/upload-artifact@v1
+        with:
+          name: sample-windows
+          path: dist/sample.exe
