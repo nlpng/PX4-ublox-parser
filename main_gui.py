@@ -27,12 +27,18 @@ class tkinterGUI:
         frame_file.grid(column=0, row=0, padx=5, pady=5)
 
         butn_select = tk.Button(
-            frame_file, text="ULog Select", command=self.select_dialog, bg="#2196f3"
+            frame_file,
+            text="ULog Select",
+            command=self.select_dialog,
+            bg="#2196f3"
         )
         butn_select.pack(side=tk.LEFT, padx=10)
 
         self.cap_filename = tk.StringVar()
-        textbox_cap = tk.Entry(frame_file, textvariable=self.cap_filename, width=30)
+        textbox_cap = tk.Entry(
+            frame_file,
+            textvariable=self.cap_filename, width=30
+        )
         textbox_cap.pack(side=tk.LEFT, padx=10)
 
         # abs path to .ulog
@@ -82,11 +88,12 @@ class tkinterGUI:
                     try:
                         # 6 bytes (sync1, sync2, class, id, len1, len2)
                         # 2 bytes (checksum)
-                        parsed_msg = UBXReader.parse(bytes(data[: 6 + payload_len + 2]))
+                        parsed_msg = UBXReader.parse(
+                            bytes(data[: 6 + payload_len + 2])
+                        )
 
                     except Exception as e:
                         print(e)
-                        # print(f"len: {payload_len}, {len(data[: 6 + payload_len + 2])}")
                         continue
 
                     if clid in count_msgs:
