@@ -22,11 +22,16 @@ jobs:
       - name: Install packages
         run: python -m pip install -r requirements.txt
 
-      - name: build
-        run: pyinstaller main_gui.py --onefile
+      - name: Build with Nuitka
+        uses: Nuitka/Nuitka-Action@main
+        with:
+          nuitka-version: main
+          script-name: main_gui.py
+          onefile: true
 
-      - name: upload
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: sample-windows
-          path: dist/main_gui.exe
+          name: windows-exe
+          path: build/main_gui.exe
+          include-hidden-files: true
