@@ -131,6 +131,12 @@ def main():
 
         data = msg[0]
         timestamp = msg[1]
+
+        if len(data) < 6:
+            # somehow data that is not enough to unpack
+            # the class, id, and payload length
+            continue
+
         if data[0] == SYNC1 and data[1] == SYNC2:
             try:
                 (cls, id, payload_len) = struct.unpack("<BBH", bytes(data[2:6]))
