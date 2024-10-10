@@ -82,13 +82,8 @@ class tkinterGUI:
             data = msg[0]
             timestamp = msg[1]
             if data[0] == SYNC1 and data[1] == SYNC2:
-                try:
-                    (cls, id, payload_len) = struct.unpack("<BBH", bytes(data[2:6]))
-                    clid = CLIDPAIR_INV.get((cls, id))
-                except Exception as e:
-                    # skip unexpected data that is not enough to unpack
-                    continue
-
+                (cls, id, payload_len) = struct.unpack("<BBH", bytes(data[2:6]))
+                clid = CLIDPAIR_INV.get((cls, id))
                 if clid:
                     try:
                         # 6 bytes (sync1, sync2, class, id, len1, len2)
