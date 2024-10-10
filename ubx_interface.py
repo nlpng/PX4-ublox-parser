@@ -275,49 +275,9 @@ MSGATTR = {
 
 
 MSGFMT = {
-    "NAV-PVT": [
-        "<LHBBBBBBLlBBBBllllLLlllllLLHHHHlhH",
-        [
-            "iTOW",
-            "year",
-            "month",
-            "day",
-            "hour",
-            "min",
-            "sec",
-            "valid",
-            "tAcc",
-            "nano",
-            "fixType",
-            "flag",
-            "flag2",
-            "numSV",
-            "lon",
-            "lat",
-            "height",
-            "hMSL",
-            "hAcc",
-            "vAcc",
-            "velN",
-            "velE",
-            "velD",
-            "gSpeed",
-            "headMot",
-            "sAcc",
-            "headAcc",
-            "pDOP",
-            "flag3",
-            "reserved0",
-            "headVeh",
-            "magDec",
-            "magAcc",
-        ],
-    ],
-    "NAV-DOP": [
-        "<IHHHHHHH",
-        ["iTOW", "gDOP", "pDOP", "tDOP", "vDOP", "hDOP", "nDOP", "eDOP"],
-    ],
-    "MON-RF": ["<BBBB", ["version", "nBlocks", "reserved0", "reserved"]],
+    "NAV-PVT": "<LHBBBBBBLlBBBBllllLLlllllLLHHHHlhH",
+    "NAV-DOP": "<IHHHHHHH",
+    "MON-RF":  "<BBBB",
 }
 
 
