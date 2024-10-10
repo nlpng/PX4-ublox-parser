@@ -271,6 +271,18 @@ MSGATTR = {
         "tempValue",
         "reserved0",
     ],
+    "MON-HW2": [
+        "ofsI",
+        "magI",
+        "ofsQ",
+        "magQ",
+        "cfgSource",
+        "reserved0",
+        "lowLevCfg",
+        "reserved1",
+        "postStatus",
+        "reserved2"
+    ]
 }
 
 
